@@ -1,13 +1,44 @@
 # HRRoutes
 
-[![CI Status](http://img.shields.io/travis/Ryota Hayashi/HRRoutes.svg?style=flat)](https://travis-ci.org/Ryota Hayashi/HRRoutes)
-[![Version](https://img.shields.io/cocoapods/v/HRRoutes.svg?style=flat)](http://cocoadocs.org/docsets/HRRoutes)
-[![License](https://img.shields.io/cocoapods/l/HRRoutes.svg?style=flat)](http://cocoadocs.org/docsets/HRRoutes)
-[![Platform](https://img.shields.io/cocoapods/p/HRRoutes.svg?style=flat)](http://cocoadocs.org/docsets/HRRoutes)
+JLRoutes~~をコピーして~~にインスパイアされて作ったやつです。
+
+URLからViewControllerを作る
 
 ## Usage
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+### 対応するViewControllerでHRRoutesViewControllerプロトコルを実装する
+
+```objc
++ (NSString *)hr_urlPattern {
+    return @"/sample/:title";
+}
+
++ (HRSampleViewController*)controllerWithParameters:(NSDictionary *)parameters {
+    HRSampleViewController *controller = [[HRSampleViewController alloc] init];
+    controller.title = parameters[@"title"];
+    return controller;
+}
+```
+
+登録
+```objc
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    [[HRRoutes sharedRoutes] registerViewController:[HRSampleViewController class]];
+    return YES;
+}
+```
+
+適当なところで呼び出す
+```objc
+UIViewController *controller = [[HRRoutes sharedRoutes] instantiateViewControllerWithURL:url];
+```
+
+便利なやつ
+```objc
+[self.navigationController hr_pushViewControllerForURL:[NSURL URLWithString:@"/sample/hoge"]
+                                              animated:YES];
+```
 
 ## Requirements
 
@@ -16,7 +47,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 HRRoutes is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
-    pod "HRRoutes"
+    pod "HRRoutes", :git => 'git@github.com:hayashi311/HRRoutes.git'
 
 ## Author
 
