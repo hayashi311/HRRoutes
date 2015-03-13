@@ -9,6 +9,11 @@ URLからViewControllerを作る
 ### 対応するViewControllerでHRRoutesViewControllerプロトコルを実装する
 
 ```objc
+@interface HogeViewController : UIViewController <HRRoutesViewController>
+@end
+
+@implementation HRSampleViewController
+
 + (NSString *)hr_urlPattern {
     return @"/sample/:title";
 }
@@ -18,10 +23,14 @@ URLからViewControllerを作る
     controller.title = parameters[@"title"];
     return controller;
 }
+
+@end
+
 ```
 
 登録
 ```objc
+// AppDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [[HRRoutes sharedRoutes] registerViewController:[HRSampleViewController class]];
