@@ -60,7 +60,7 @@ it, simply add the following line to your Podfile:
 
 ## Author
 
-Ryota Hayashi, ryota.hayashi@glucose.jp
+Ryota Hayashi, hayashi311@gmail.com
 
 ## License
 
