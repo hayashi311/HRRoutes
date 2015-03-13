@@ -7,6 +7,7 @@
 //
 
 #import "HRViewController.h"
+#import "UINavigationController+HRRoutes.h"
 
 @interface HRViewController ()
 
@@ -17,13 +18,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
 }
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self.navigationController hr_pushViewControllerForURL:[NSURL URLWithString:@"/sample/hoge"]
+                                                      animated:YES];
+    });
+}
+
 
 @end

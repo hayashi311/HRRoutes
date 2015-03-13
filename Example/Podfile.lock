@@ -1,0 +1,14 @@
+PODS:
+  - HRRoutes (0.1.0)
+
+DEPENDENCIES:
+  - HRRoutes (from `../`)
+
+EXTERNAL SOURCES:
+  HRRoutes:
+    :path: ../
+
+SPEC CHECKSUMS:
+  HRRoutes: 5f4a73ce70d36a0d2de708076d6f5baf1e6b1a56
+
+COCOAPODS: 0.35.0

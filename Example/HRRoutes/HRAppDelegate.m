@@ -7,12 +7,14 @@
 //
 
 #import "HRAppDelegate.h"
+#import "HRRoutes.h"
+#import "HRSampleViewController.h"
 
 @implementation HRAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    [[HRRoutes sharedRoutes] registerViewController:[HRSampleViewController class]];
     return YES;
 }
 							
