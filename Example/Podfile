@@ -1,0 +1,11 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'HRRoutes', :exclusive => true do
+  pod "HRRoutes", :path => "../"
+end
+
+target 'Tests', :exclusive => true do
+  pod "HRRoutes", :path => "../"
+
+  
+end
